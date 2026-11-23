@@ -1,3 +1,5 @@
+from positions import base_position,normal_position,raster_position,new_position
+
 def compute_combination(limit,a,b):
     my_set = set()
     for alpha in range(limit // a+1): 
@@ -12,15 +14,9 @@ def get_valid_positions(L, W, a, b, mode="new"):
     S_L = compute_combination(L - b, a, b)
     S_W = compute_combination(W - b, a, b)
     if mode == "base":
-        h_x = list(range(L-a+1))
-        h_y = list(range(W-b+1))
-        v_x = list(range(L-b+1))
-        v_y = list(range(W-a+1))
+        h_x,h_y,v_x,v_y=base_position(L,W,a,b)
     elif mode == "normal":
-        h_x = [x for x in S_L if x <= L-a]
-        h_y = [y for y in S_W if y <= W-b]
-        v_x = [x for x in S_L if x <= L-b]
-        v_y = [y for y in S_W if y <= W-a]
+        h_x,h_y,v_x,v_y=normal_position(S_L,S_W,L,W,a,b)
     elif mode == "raster":
         R_L = {0}
         R_W = {0}
@@ -28,23 +24,13 @@ def get_valid_positions(L, W, a, b, mode="new"):
             R_L.add(round_down(S_L, L-r))
         for r in S_W:
             R_W.add(round_down(S_W, W-r))
-        h_x = [x for x in sorted(R_L) if x <= L-a]
-        h_y = [y for y in sorted(R_W) if y <= W-b]
-        v_x = [x for x in sorted(R_L) if x <= L-b]
-        v_y = [y for y in sorted(R_W) if y <= W-a]
+        h_x,h_y,v_x,v_y=raster_position(R_L,R_W,L,W,a,b)
     elif mode == "new":
-        def reduced_axis(D,d):
-            S_rem = compute_combination(D-d,a,b)
-            return sorted({round_down(S_rem,D-d-r) for r in S_rem})
-        h_x = reduced_axis(L, a)
-        h_y = reduced_axis(W, b)
-        v_x = reduced_axis(L, b)
-        v_y = reduced_axis(W, a)
-    h_positions=[]
+        h_x,h_y,v_x,v_y=new_position(L,W,a,b)
+    h_positions, v_positions=[]
     for k in h_x:
         for j in h_y:
             h_positions.append((k,j))
-    v_positions=[]
     for k in v_x:
         for j in v_y:
             v_positions.append((k,j))
