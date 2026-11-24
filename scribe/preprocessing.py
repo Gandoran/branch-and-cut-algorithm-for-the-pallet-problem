@@ -1,14 +1,4 @@
-from positions import base_position,normal_position,raster_position,new_position
-
-def compute_combination(limit,a,b):
-    my_set = set()
-    for alpha in range(limit // a+1): 
-        for beta in range((limit - alpha * a) // b + 1):
-           my_set.add(alpha*a+beta*b) 
-    return sorted(my_set)
-
-def round_down(S,value):
-    return max(r for r in S if r<=value)
+from positions import base_position,normal_position,raster_position,new_position, compute_combination, round_down
 
 def get_valid_positions(L, W, a, b, mode="new"):
     S_L = compute_combination(L - b, a, b)
@@ -27,7 +17,7 @@ def get_valid_positions(L, W, a, b, mode="new"):
         h_x,h_y,v_x,v_y=raster_position(R_L,R_W,L,W,a,b)
     elif mode == "new":
         h_x,h_y,v_x,v_y=new_position(L,W,a,b)
-    h_positions, v_positions=[]
+    h_positions, v_positions=[], []
     for k in h_x:
         for j in h_y:
             h_positions.append((k,j))

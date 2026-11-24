@@ -25,7 +25,7 @@ def solve_plp_milp(L, W, a, b, mode="new", time_limit=60.0, threads=None, verbos
     for idx, (var_set, q) in enumerate(constraints):
         expr = gp.quicksum(vars_dict[key] for key in var_set)
         if upper_bound_B is not None and q > U: model.addConstr(expr == 1, name=f"cov_eq_{idx}")
-        else: model.addConstr(expr <= 1, name=f"cov_eq_{idx}")
+        else: model.addConstr(expr <= 1, name=f"cov_{idx}")
 
     model.optimize()
 
@@ -35,11 +35,11 @@ def solve_plp_milp(L, W, a, b, mode="new", time_limit=60.0, threads=None, verbos
         placed_h, placed_v = [],[]
         for key, var in vars_dict.items():
             if var.X > 0.5:
-                if(key == "V"): placed_v.append((key[1],key[2]))
-                elif(key == "H"): placed_h.append((key[1],key[2]))
+                if(key[0] == "V"): placed_v.append((key[1],key[2]))
+                elif(key[0] == "H"): placed_h.append((key[1],key[2]))
     else:
         obj_val, gap = None, None
-        placed_h, placed_v = []
+        placed_h, placed_v = [],[]
 
     is_optimal = (model.Status == GRB.OPTIMAL)
     is_time_limit = (model.Status == GRB.TIME_LIMIT)
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     ]
 
     for (L, W, a, b) in test_instances:
-        print(f"\n=== Istanza ({L}, {W}, {a}, {b}) ===")
+        print(f"\n=== Istance ({L}, {W}, {a}, {b}) ===")
         for mode in ["base", "normal", "raster", "new"]:
             res = solve_plp_milp(L, W, a, b, mode=mode, time_limit=60.0)
             status = "OPT" if res["is_optimal"] else ("TL" if res["is_time_limit"] else "OTHER")

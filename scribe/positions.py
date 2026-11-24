@@ -1,4 +1,12 @@
-from preprocessing import compute_combination,round_down
+def compute_combination(limit,a,b):
+    my_set = set()
+    for alpha in range(limit // a+1): 
+        for beta in range((limit - alpha * a) // b + 1):
+           my_set.add(alpha*a+beta*b) 
+    return sorted(my_set)
+
+def round_down(S,value):
+    return max(r for r in S if r<=value)
 
 def base_position(L,W,a,b):
     h_x = list(range(L-a+1))

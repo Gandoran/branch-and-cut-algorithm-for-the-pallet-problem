@@ -1,0 +1,25 @@
+instance,cover,area_ub,mode,vars,constrs,obj_val,status,gap_pct,runtime_s,nodes
+"(11,10,4,3)",Cover I,9,base,127,110,9,OPT,0.0,0.016,1
+"(11,10,4,3)",Cover I,9,new,25,21,9,OPT,0.0,0.002,1
+"(15,11,4,3)",Cover I,13,base,212,165,13,OPT,0.0,0.017,1
+"(15,11,4,3)",Cover I,13,new,46,39,13,OPT,0.0,0.006,1
+"(22,16,5,3)",Cover I,23,base,492,352,23,OPT,0.0,0.02,1
+"(22,16,5,3)",Cover I,23,new,142,112,23,OPT,0.0,0.011,1
+"(27,17,5,3)",Cover I,30,base,670,459,30,OPT,0.0,0.031,1
+"(27,17,5,3)",Cover I,30,new,205,171,30,OPT,0.0,0.017,1
+"(30,22,7,4)",Cover I,23,base,888,660,23,OPT,0.0,0.03,1
+"(30,22,7,4)",Cover I,23,new,142,112,23,OPT,0.0,0.009,1
+"(34,23,5,4)",Cover I,39,base,1189,782,38,OPT,0.0,0.06,1
+"(34,23,5,4)",Cover I,39,new,315,242,38,OPT,0.0,0.085,1
+"(40,25,7,3)",Cover I,47,base,1504,1000,47,OPT,0.0,0.225,1
+"(40,25,7,3)",Cover I,47,new,498,364,47,OPT,0.0,0.148,1
+"(43,26,7,4)",Cover I,39,base,1651,1118,39,OPT,0.0,0.114,1
+"(43,26,7,4)",Cover I,39,new,347,275,39,OPT,0.0,0.117,1
+"(49,28,8,3)",Cover II,57,base,LIC_LIMIT,LIC_LIMIT,,LIC_LIMIT,,,
+"(49,28,8,3)",Cover II,57,new,694,490,57,OPT,0.0,0.235,1
+"(56,39,9,4)",Cover II,60,base,LIC_LIMIT,LIC_LIMIT,,LIC_LIMIT,,,
+"(56,39,9,4)",Cover II,60,new,636,480,60,OPT,0.0,0.193,1
+"(61,38,10,4)",Cover II,57,base,LIC_LIMIT,LIC_LIMIT,,LIC_LIMIT,,,
+"(61,38,10,4)",Cover II,57,new,583,390,57,OPT,0.0,0.11,1
+"(89,75,10,7)",Cover II,95,base,LIC_LIMIT,LIC_LIMIT,,LIC_LIMIT,,,
+"(89,75,10,7)",Cover II,95,new,1640,1131,94,TL,1.06,60.007,370
